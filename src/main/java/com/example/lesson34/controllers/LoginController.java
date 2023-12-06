@@ -1,5 +1,6 @@
-package com.example.lesson34;
+package com.example.lesson34.controllers;
 
+import com.example.lesson34.LoginProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +32,11 @@ public class LoginController {
         boolean loggedIn = loginProcessor.login();
 
         if (loggedIn){
-            model.addAttribute("message", "You are now logged in.");
-        }else{
-            model.addAttribute("message", "Login failed");
+            //model.addAttribute("message", "You are now logged in.");
+            return "redirect:/main";
         }
+        //else{
+        model.addAttribute("message", "Login failed");
         return "login.html";
     }
 
